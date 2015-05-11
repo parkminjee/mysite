@@ -14,7 +14,7 @@
 		</div>
 		<div id="content">
 			<div id="guestbook" class="delete-form">
-				<form action="/guestbook2/gb" method="post">
+				<form action="/mysite/guestbook" method="post">
 					<input type='hidden' name="no"
 						value="<%=Integer.parseInt(request.getParameter("no"))%>">
 					<input type='hidden' name="a" value="delete">

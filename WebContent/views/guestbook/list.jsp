@@ -1,5 +1,8 @@
-<%@ page import="com.sds.icto.mysite.vo.guestbookVo" %>
-<%@ page import="com.sds.icto.mysite.dao.guestbookDao" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="fn"%>
+<%@ page import="com.sds.icto.mysite.vo.guestbookVo"%>
+<%@ page import="com.sds.icto.mysite.dao.guestbookDao"%>
 <%@ page contentType="text/html;charset=UTF-8"%>
 <%@ page import="java.util.List"%>
 
@@ -19,7 +22,7 @@
 <body>
 	<div id="container">
 		<div id="header">
-			<jsp:include page="/views/include/header.jsp" flush="false" />
+			<c:import url="/views/include/header.jsp"/>
 		</div>
 		<div id="content">
 			<div id="guestbook">
@@ -41,24 +44,21 @@
 					</table>
 				</form>
 				<br>
-				<%
-					for (guestbookVo vo : list) {
-				%>
-				<table width=510 border=1>
-					<tr>
-						<td><%=vo.getNo()%></td>
-						<td><%=vo.getId()%></td>
-						<td><%=vo.getDate()%></td>
-						<td><a href="deleteform.jsp?no=<%=vo.getNo()%>">삭제</a></td>
-					</tr>
-					<tr>
-						<td colspan=4><%=vo.getMeg()%></td>
-					</tr>
-				</table>
-				<br>
-				<%
-					}
-				%>
+				<c:forEach items="${list }" var="vo">
+
+					<table width=510 border=1>
+						<tr>
+							<td>${vo.no }</td>
+							<td>${vo.id }</td>
+							<td>${vo.date }</td>
+							<td><a href="deleteform.jsp?no=${vo.no }">삭제</a></td>
+						</tr>
+						<tr>
+							<td colspan=4>${vo.meg }</td>
+						</tr>
+					</table>
+					<br>
+				</c:forEach>
 				</form>
 				<ul>
 					<li>
@@ -78,11 +78,10 @@
 			</div>
 		</div>
 		<div id="navigation">
-			<jsp:include page="/views/include/navigation.jsp" />
+			<c:import url="/views/include/navigation.jsp"/>
 		</div>
 		<div id="footer">
-			<jsp:include page="/views/include/footer.jsp" />
-			//
+			<c:import url="/views/include/footer.jsp"/>
 			<p>(c)opyright 2014</p>
 		</div>
 	</div>
