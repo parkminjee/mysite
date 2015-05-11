@@ -14,7 +14,7 @@
 		</div>
 		<div id="content">
 			<div id="guestbook" class="delete-form">
-				<form action="/mysite/guestbook" method="post">
+				<form action="/mysite/views/guestbook/list.jsp" method="post">
 					<input type='hidden' name="no"
 						value="<%=Integer.parseInt(request.getParameter("no"))%>">
 					<input type='hidden' name="a" value="delete">
@@ -23,7 +23,7 @@
 							<td>비밀번호</td>
 							<td><input type="password" name="pwd"></td>
 							<td><input type="submit" value="확인"></td>
-							<td><a href="/mysite">메인으로 돌아가기</a></td>
+							<td><a href="/mysite/views/main/index.jsp">메인으로 돌아가기</a></td>
 						</tr>
 					</table>
 				</form>

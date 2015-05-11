@@ -8,6 +8,7 @@
 
 <%
 	guestbookDao dao = new guestbookDao();
+	guestbookVo vo = new guestbookVo();
 	List<guestbookVo> list = dao.fetchList();
 %>
 
@@ -26,7 +27,7 @@
 		</div>
 		<div id="content">
 			<div id="guestbook">
-				<form action="/mysite/guestbook" method="post">
+				<form action="/mysite/views/guestbook/list.jsp" method="post">
 					<input type='hidden' name="a" value="add">
 					<table border=1 width=500>
 						<tr>
@@ -67,7 +68,7 @@
 								<td></td>
 								<td></td>
 								<td></td>
-								<td><a href="">삭제</a></td>
+								<td><a href="/mysite/views/guestbook/deleteform.jsp">삭제</a></td>
 							</tr>
 							<tr>
 								<td colspan=4></td>

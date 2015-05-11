@@ -30,7 +30,7 @@ public class InsertAction implements Action {
 		guestbookDao dao = new guestbookDao();
 		dao.insert( vo );
 
-		response.sendRedirect("/guestbook2/gb");
+		response.sendRedirect("/mysite/guestbook");
 	}
 
 }

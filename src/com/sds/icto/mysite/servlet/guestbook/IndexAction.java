@@ -22,7 +22,7 @@ public class IndexAction implements Action {
 		guestbookDao dao = new guestbookDao();
 		List<guestbookVo> list = dao.fetchList();
 		request.setAttribute( "list", list );
-		WebUtil.forward( "/view/index.jsp", request, response);
+		WebUtil.forward( "/views/guestbook/list.jsp", request, response);
 	}
 
 }

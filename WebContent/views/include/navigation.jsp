@@ -9,22 +9,8 @@
 	MemberVo authMember = (MemberVo) session.getAttribute("authMember");
 %>
 <ul>
-	<c:choose>
-		<c:when test="${type=='main' }">
-			<li class="selected">${authMember.name }</li>
-			<li><a href="guestbook">방명록</a></li>
-			<li><a href="">게시판</a></li>
-		</c:when>
-		<c:when test="${type=='board' }">
-			<li>게스트</li>
-			<li><a href="guestbook">방명록</a></li>
-			<li><a href="">게시판</a></li>
-		</c:when>
-		<c:otherwise>
-			<li>게스트</li>
-			<li><a href="guestbook">방명록</a></li>
-			<li><a href="">게시판</a></li>
-		</c:otherwise>
-	</c:choose>
+	<li class="selected">${authMember.name }</li>
+	<li><a href="/mysite/guestbook">방명록</a></li>
+	<li><a href="">게시판</a></li>
 
 </ul>

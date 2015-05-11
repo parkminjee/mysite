@@ -30,7 +30,7 @@ public class DeleteAction implements Action {
 			dao.delete(no, pwd);
 		}
 
-		response.sendRedirect("/guestbook2/gb");
+		response.sendRedirect("/mysite/guestbook");
 	}
 
 }
