@@ -8,7 +8,6 @@
 
 <%
 	guestbookDao dao = new guestbookDao();
-	guestbookVo vo = new guestbookVo();
 	List<guestbookVo> list = dao.fetchList();
 %>
 
@@ -23,7 +22,7 @@
 <body>
 	<div id="container">
 		<div id="header">
-			<c:import url="/views/include/header.jsp"/>
+			<c:import url="/views/include/header.jsp" />
 		</div>
 		<div id="content">
 			<div id="guestbook">
@@ -31,8 +30,12 @@
 					<input type='hidden' name="a" value="add">
 					<table border=1 width=500>
 						<tr>
+							<td>제목</td>
+							<td><input type="text" name=""></td>
+						</tr>
+						<tr>
 							<td>이름</td>
-							<td><input type="text" name="name"></td>
+							<td><input type="text" name=""></td>
 							<td>비밀번호</td>
 							<td><input type="password" name="pwd"></td>
 						</tr>
@@ -45,45 +48,32 @@
 					</table>
 				</form>
 				<br>
-				<c:forEach items="${list }" var="vo">
+				<%
+					for (guestbookVo vo : list) {
+				%>
+				<table width=510 border=1>
+					<tr>
+						<td><%=vo.getNo()%></td>
+						<td><%=vo.getId()%></td>
+						<td><%=vo.getDate()%></td>
+						<td><a href="deleteform.jsp?no=<%=vo.getNo()%>">삭제</a></td>
+					</tr>
+					<tr>
+						<td colspan=4><%=vo.getMeg()%></td>
+					</tr>
+				</table>
+				<br>
+				<%
+					}
+				%>
 
-					<table width=510 border=1>
-						<tr>
-							<td>${vo.no }</td>
-							<td>${vo.id }</td>
-							<td>${vo.date }</td>
-							<td><a href="deleteform.jsp?no=${vo.no }">삭제</a></td>
-						</tr>
-						<tr>
-							<td colspan=4>${vo.meg }</td>
-						</tr>
-					</table>
-					<br>
-				</c:forEach>
-				</form>
-				<ul>
-					<li>
-						<table>
-							<tr>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td><a href="/mysite/views/guestbook/deleteform.jsp">삭제</a></td>
-							</tr>
-							<tr>
-								<td colspan=4></td>
-							</tr>
-						</table> <br>
-					</li>
-				</ul>
 			</div>
 		</div>
 		<div id="navigation">
-			<c:import url="/views/include/navigation.jsp"/>
+			<c:import url="/views/include/navigation.jsp" />
 		</div>
 		<div id="footer">
-			<c:import url="/views/include/footer.jsp"/>
-			<p>(c)opyright 2014</p>
+			<c:import url="/views/include/footer.jsp" />
 		</div>
 	</div>
 </body>

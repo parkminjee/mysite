@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.sds.icto.mysite.servlet.guestbook.DeleteAction;
+import com.sds.icto.mysite.servlet.guestbook.DeleteFormAction;
 import com.sds.icto.mysite.servlet.guestbook.IndexAction;
 import com.sds.icto.mysite.servlet.guestbook.InsertAction;
 import com.sds.icto.web.Action;
@@ -50,6 +51,8 @@ public class guestbookServlet extends HttpServlet {
 			}else if("add".equals(a)){
 				action = new InsertAction();
 				
+			}else if("deleteform".equals(a)){
+				action = new DeleteFormAction();
 			}
 			if(action == null){
 				action = new IndexAction();

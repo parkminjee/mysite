@@ -11,6 +11,6 @@
 <ul>
 	<li class="selected">${authMember.name }</li>
 	<li><a href="/mysite/guestbook">방명록</a></li>
-	<li><a href="">게시판</a></li>
+	<li><a href="/mysite/views/board/board.jsp">게시판</a></li>
 
 </ul>

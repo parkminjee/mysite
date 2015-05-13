@@ -61,14 +61,14 @@ public class guestbookDao {
 		// 4. 결과 처리
 		while (rs.next()) {
 			int no = rs.getInt(1);
-			String name = rs.getString(2);
+			String id = rs.getString(2);
 			String pwd = rs.getString(3);
 			String meg = rs.getString(4);
 			String date = rs.getString(5);
 
 			guestbookVo vo = new guestbookVo();
 			vo.setNo(no);
-			vo.setId(name);
+			vo.setId(id);
 			vo.setPwd(pwd);
 			vo.setMeg(meg);
 			vo.setDate(date);
