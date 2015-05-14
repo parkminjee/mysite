@@ -11,7 +11,6 @@ import java.util.List;
 
 import com.sds.icto.mysite.vo.guestbookVo;
 
-
 public class guestbookDao {
 
 	private Connection getConnection() throws ClassNotFoundException,

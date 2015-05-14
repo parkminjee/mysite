@@ -18,6 +18,8 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <link href="/mysite/assets/css/guestbook.css" rel="stylesheet"
 	type="text/css">
+<link href="/mysite/assets/css/board.css" rel="stylesheet"
+	type="text/css">
 </head>
 <body>
 	<div id="container">
@@ -31,7 +33,7 @@
 					<table border=1 width=500>
 						<tr>
 							<td>제목</td>
-							<td><input type="text" name=""></td>
+							<td colspan=3><input type="text" name=""></td>
 						</tr>
 						<tr>
 							<td>이름</td>
@@ -56,7 +58,7 @@
 						<td><%=vo.getNo()%></td>
 						<td><%=vo.getId()%></td>
 						<td><%=vo.getDate()%></td>
-						<td><a href="deleteform.jsp?no=<%=vo.getNo()%>">삭제</a></td>
+						<td><a href="/mysite/views/guestbook/deleteform.jsp?no=<%=vo.getNo()%>">삭제</a></td>
 					</tr>
 					<tr>
 						<td colspan=4><%=vo.getMeg()%></td>

@@ -41,16 +41,16 @@
 					</button>
 				</a>
 				<div>
-					<table border=1 width=500>
+					<table>
 						<tr>
 							<td>제목</td>
 							<td colspan=3>제목제목제목제목제목제목제목제목제목</td>
-							</tr>
-							<tr>
+						</tr>
+						<tr>
 							<td>이름</td>
 							<td>이름여기</td>
 							<td>작성일</td>
-							<td>00.00.00<td>
+							<td>날짜여기</td>
 						</tr>
 						<tr>
 							<td colspan=4>내용!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1</td>

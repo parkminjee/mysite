@@ -42,10 +42,11 @@
 				</a>
 
 				<div>
-					<table border=1 width=500>
-					<tr>
-					<td >제목</td>
-					<td colspan=3><textarea name="" cols=60></textarea></td>
+					<table>
+						<tr>
+							<td>제목</td>
+							<td colspan=3><textarea name="" cols=60 rows=1.5></textarea></td>
+						</tr>
 						<tr>
 							<td>이름</td>
 							<td><input type="text" name=""></td>
@@ -53,7 +54,7 @@
 							<td><input type="password" name=""></td>
 						</tr>
 						<tr>
-							<td colspan=4><textarea name="" cols=100 rows=5></textarea></td>
+							<td colspan=4><textarea name="" cols=80 rows=8></textarea></td>
 						</tr>
 						<tr>
 							<td colspan=4 align=right><a
@@ -62,7 +63,7 @@
 										class="button button--antiman button--round-m button--text-medium button--border-medium">
 										<i class="button__icon icon icon-plus"></i><span>확인</span>
 
-									</button></td>
+									</button></a></td>
 						</tr>
 					</table>
 				</div>
