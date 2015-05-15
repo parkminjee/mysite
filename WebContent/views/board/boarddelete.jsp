@@ -27,16 +27,17 @@
 			<div id="content">
 
 				<div>
-					<c:choose>
-						<c:when test="${authMember.equals(member_name) }">
+
+						
 							<form id="login-form" name="loginform" method="post">
+							<input type="hidden" name="a" value="delete">
 								<p>정말로 삭제하시겠습니까?</p>
 								<a href="/mysite/views/board/board.jsp">
 									<button
 										class="button button--antiman button--round-m button--text-medium button--border-medium">
 										<i class="button__icon icon icon-plus"></i><span>취소</span>
 									</button>
-								</a> <a href="/mysite/views/board/board.jsp">
+								</a> <a href="/mysite/views/board/board.jsp?a=deleteform&no=${delete.no }">
 									<button type="submit"
 										class="button button--antiman button--round-m button--text-medium button--border-medium">
 										<i class="button__icon icon icon-plus"></i><span>확인</span>
@@ -44,20 +45,7 @@
 								</a>
 
 							</form>
-						</c:when>
 
-						<c:otherwise>
-							<form id="login-form" name="loginform" method="post">
-								<p>권한이 없습니다.</p>
-								<a href="/mysite/board">
-									<button
-										class="button button--antiman button--round-m button--text-medium button--border-medium">
-										<i class="button__icon icon icon-plus"></i><span>목록</span>
-									</button>
-								</a>
-							</form>
-						</c:otherwise>
-					</c:choose>
 				</div>
 
 

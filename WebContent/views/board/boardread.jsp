@@ -61,6 +61,11 @@
 								<td colspan=4>${fn:replace( read.content, newLineChar, "<br>" ) }</td>
 							</tr>
 							<tr>
+							<c:choose>
+							<c:when test="${empty authMember }">
+							<td align=right colspan=4>수정 및 삭제 권한이 없습니다.</td>
+							</c:when>
+							<c:otherwise>
 								<td colspan=4 align=right><a
 									href="/mysite/views/board/boarddelete.jsp">
 										<button
@@ -75,6 +80,8 @@
 
 										</button>
 								</a></td>
+								</c:otherwise>
+								</c:choose>
 							</tr>
 						</table>
 				</div>

@@ -88,17 +88,16 @@ public class boardDao {
 		return list;
 	}
 
-	public void delete(int no, int member_no, String member_name)
+	public void delete(int no)
 			throws ClassNotFoundException, SQLException {
 		// 1. Connection 생성
 		Connection conn = getConnection();
 		// 2. Statement(SQL) 준비
-		String sql = "delete from board where no =? and member_no = ? and member_name = ?";
+		String sql = "delete from board where no =?";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		// 3.binding
 		pstmt.setInt(1, no);
-		pstmt.setInt(2, member_no);
-		pstmt.setString(3, member_name);
+
 
 		// 4. query 실행
 		pstmt.executeUpdate();
