@@ -1,10 +1,13 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="fmt"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="fn"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ page import="com.sds.icto.mysite.vo.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%
+	pageContext.setAttribute("newLineChar", "\n");
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -28,10 +31,10 @@
 		<div id="wrapper">
 			<div id="content">
 				<div id="boardname">
-					<h3>게시판이름</h3>
+					<h2>게시판이름</h2>
 				</div>
 				<div id="boardsub">
-					<h6>게시판설명</h6>
+					<h5>게시판설명</h5>
 				</div>
 				<a href="/mysite/views/board/boardwrite.jsp">
 					<button
@@ -42,30 +45,34 @@
 				</a>
 
 				<div>
-					<table>
-						<tr>
-							<td>제목</td>
-							<td colspan=3><textarea name="" cols=60 rows=1.5></textarea></td>
-						</tr>
-						<tr>
-							<td>이름</td>
-							<td><input type="text" name=""></td>
-							<td>비밀번호</td>
-							<td><input type="password" name=""></td>
-						</tr>
-						<tr>
-							<td colspan=4><textarea name="" cols=80 rows=8></textarea></td>
-						</tr>
-						<tr>
-							<td colspan=4 align=right><a
-								href="/mysite/views/board/board.jsp">
-									<button
-										class="button button--antiman button--round-m button--text-medium button--border-medium">
-										<i class="button__icon icon icon-plus"></i><span>확인</span>
+					<form action="/mysite/board" method="post">
+					<input type='hidden' name="a" value="write">
+					<input type="hidden" value="${authMember.no}" id="member_no" name="member_no">
+				<input type="hidden" value="${authMember.name}"id="member_name" name="member_name"> 
+						<table>
+							<tr>
+								<td>제목</td>
+								<td colspan=3><textarea name="title" cols=70 rows=1.5></textarea></td>
+							</tr>
 
-									</button></a></td>
-						</tr>
-					</table>
+							<tr>
+								<td>내용</td>
+								<td><textarea name="content" cols=70 rows=8></textarea></td>
+							</tr>
+							<tr>
+								<c:choose>
+								<c:when test="${empty authMember }">
+								<td></td>
+								<td>로그인이 필요합니다. 로그인해주세요.</td>
+								</c:when>
+								<c:otherwise>
+								<td></td>
+								<td align=right><input type="submit" VALUE=" 확인 "></td>
+							</c:otherwise>
+							</c:choose>
+							</tr>
+						</table>
+					</form>
 				</div>
 
 			</div>

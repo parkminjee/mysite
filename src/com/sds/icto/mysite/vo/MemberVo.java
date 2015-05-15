@@ -1,17 +1,17 @@
 package com.sds.icto.mysite.vo;
 
 public class MemberVo {
-	private Long no;
+	private int no;
 	private String name;
 	private String email;
 	private String password;
 	private String gender;
 	
 	
-	public Long getNo() {
+	public int getNo() {
 		return no;
 	}
-	public void setNo(Long no) {
+	public void setNo(int no) {
 		this.no = no;
 	}
 	public String getName() {

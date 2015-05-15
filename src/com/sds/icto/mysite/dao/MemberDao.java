@@ -59,7 +59,7 @@ public class MemberDao {
 		MemberVo memberVo = null;
 		
 		if(rs.next()){
-			Long no = rs.getLong(1);
+			int no = rs.getInt(1);
 			String name = rs.getString(2);
 			String email = rs.getString(3);
 			//String password = rs.getString(4);

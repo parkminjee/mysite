@@ -1,6 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="fmt"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="fn"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ page import="com.sds.icto.mysite.vo.guestbookVo"%>
 <%@ page import="com.sds.icto.mysite.dao.guestbookDao"%>
 <%@ page import="java.util.List"%>
@@ -28,20 +28,14 @@
 		</div>
 		<div id="content">
 			<div id="guestbook" class="delete-form">
-				<form method="post">
+				<form action="/mysite/guestbook" method="post">
+				<input type='hidden' name="a" value="delete">
 					<input type='hidden' name="no"
 						value="<%=Integer.parseInt(request.getParameter("no"))%>">
-					<input type='hidden' name="a" value="delete">
-						<label class="block-label">패스워드</label> <input name="password"
-							type="password" value="">
-						<c:if test="${param.result }">
-							<p>패스워드를 확인하십시오</p>
-						</c:if>
-						<a href="/mysite/views/guestbook/list.jsp">
-							<button
-								class="button button--antiman button--round-m button--text-medium button--border-medium">
-								<i class="button__icon icon icon-plus"></i><span>확인</span>
-							</button></a>
+					
+						<label class="block-label">패스워드</label> <input name="pwd"
+							type="password">
+						<input type="submit" value="확인">
 				</form>
 				<a href="/mysite/guestbook?a=gusetbook">방명록 리스트</a>
 			</div>

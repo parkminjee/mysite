@@ -87,8 +87,7 @@ public class guestbookDao {
 		return list;
 	}
 
-	public void delete(int no, String pwd) throws ClassNotFoundException,
-			SQLException {
+	public void delete(int no, String pwd) throws ClassNotFoundException, SQLException {
 		// 1. Connection 생성
 		Connection conn = getConnection();
 		// 2. Statement(SQL) 준비

@@ -1,15 +1,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="fmt"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="fn"%>
-<%@ page import="com.sds.icto.mysite.vo.guestbookVo"%>
-<%@ page import="com.sds.icto.mysite.dao.guestbookDao"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ page contentType="text/html;charset=UTF-8"%>
-<%@ page import="java.util.List"%>
-
 <%
-	guestbookDao dao = new guestbookDao();
-	List<guestbookVo> list = dao.fetchList();
+	pageContext.setAttribute("newLineChar", "\n");
 %>
+
+
 
 <!doctype html>
 <html>
@@ -28,16 +25,12 @@
 		</div>
 		<div id="content">
 			<div id="guestbook">
-				<form action="/mysite/views/guestbook/list.jsp" method="post">
+				<form action="/mysite/guestbook" method="post">
 					<input type='hidden' name="a" value="add">
 					<table border=1 width=500>
 						<tr>
-							<td>제목</td>
-							<td colspan=3><input type="text" name=""></td>
-						</tr>
-						<tr>
 							<td>이름</td>
-							<td><input type="text" name=""></td>
+							<td><input type="text" name="name"></td>
 							<td>비밀번호</td>
 							<td><input type="password" name="pwd"></td>
 						</tr>
@@ -50,25 +43,21 @@
 					</table>
 				</form>
 				<br>
-				<%
-					for (guestbookVo vo : list) {
-				%>
-				<table width=510 border=1>
-					<tr>
-						<td><%=vo.getNo()%></td>
-						<td><%=vo.getId()%></td>
-						<td><%=vo.getDate()%></td>
-						<td><a href="/mysite/views/guestbook/deleteform.jsp?no=<%=vo.getNo()%>">삭제</a></td>
-					</tr>
-					<tr>
-						<td colspan=4><%=vo.getMeg()%></td>
-					</tr>
-				</table>
-				<br>
-				<%
-					}
-				%>
-
+				<c:forEach items="${requestScope.list }" var="vo">
+					<table width=510 border=1>
+						<tr>
+							<td>${vo.no }</td>
+							<td>${vo.id }</td>
+							<td>${vo.date }</td>
+							<td><a
+								href="/mysite/views/guestbook/deleteform.jsp?no=${vo.no }">삭제</a></td>
+						</tr>
+						<tr>
+							<td colspan=4>${fn:replace( vo.meg, newLineChar, "<br>" ) }</td>
+						</tr>
+					</table>
+					<br>
+				</c:forEach>
 			</div>
 		</div>
 		<div id="navigation">

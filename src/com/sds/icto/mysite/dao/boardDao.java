@@ -54,7 +54,7 @@ public class boardDao {
 		// 2. statment 생성
 		Statement stmt = conn.createStatement();
 		// 3. SQL문 실행
-		String sql = "select no, title, member_name, reg_date from board";
+		String sql = "select * from board";
 		ResultSet rs = stmt.executeQuery(sql);
 		// 4. 결과 처리
 		while (rs.next()) {
@@ -111,19 +111,20 @@ public class boardDao {
 		}
 	}
 
-	public void modify(int no, int member_no, String member_name) throws ClassNotFoundException, SQLException {
+	public void update(boardVo vo)
+			throws ClassNotFoundException, SQLException {
 		// 1. Connection 생성
 		Connection conn = getConnection();
 		// 2. Statement(SQL) 준비
-		String sql = "select * from board where no=? and member_no=? and member_name=?";
+		String sql = "update board set title=?, content=?, reg_date=sysdate where no=?";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		// 3.binding
-		pstmt.setInt(1, no);
-		pstmt.setInt(2, member_no);
-		pstmt.setString(3, member_name);
-
-		// 4. query 실행
+		pstmt.setString(1, vo.getTitle());
+		pstmt.setString(2, vo.getContent());
+		pstmt.setInt(3, vo.getNo());
 		pstmt.executeUpdate();
+
+		
 		// 5. 자원정리
 		if (pstmt != null) {
 			pstmt.close();
@@ -131,5 +132,41 @@ public class boardDao {
 		if (conn != null) {
 			conn.close();
 		}
+	}
+
+	public boardVo read(int no) throws ClassNotFoundException,
+			SQLException {
+		boardVo read=null;
+		// 1. Connection 생성
+		Connection conn = getConnection();
+		// 3. SQL문 실행
+		String sql = "select no, title, content, member_no,	member_name, to_char(sysdate,'yyyy-mm-dd') from board where no=?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, no);
+		
+		ResultSet rs = pstmt.executeQuery();
+		
+		// 4. 결과 처리
+		if (rs.next()) {
+			String title = rs.getString(2);
+			String content = rs.getString(3);
+			int member_no = rs.getInt(4);
+			String member_name = rs.getString(5);
+			String reg_date = rs.getString(6);
+
+			read = new boardVo(no, title, content, member_no, member_name, reg_date);
+		}
+		// 5. 자원정리
+		if (rs != null) {
+			rs.close();
+		}
+		if (pstmt != null) {
+			pstmt.close();
+		}
+		if (conn != null) {
+			conn.close();
+		}
+		
+		return read;
 	}
 }

@@ -1,10 +1,12 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="fmt"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="fn"%>
-<%@ page import="com.sds.icto.mysite.vo.*"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ page import="com.sds.icto.mysite.vo.boardVo"%>
+<%@ page import="com.sds.icto.mysite.dao.boardDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -41,30 +43,40 @@
 					</button>
 				</a>
 				<div>
-					<table>
-						<tr>
-							<td>제목</td>
-							<td colspan=3>제목제목제목제목제목제목제목제목제목</td>
-						</tr>
-						<tr>
-							<td>이름</td>
-							<td>이름여기</td>
-							<td>작성일</td>
-							<td>날짜여기</td>
-						</tr>
-						<tr>
-							<td colspan=4>내용!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1</td>
-						</tr>
-						<tr>
-							<td colspan=4 align=right><a
-								href="/mysite/views/board/boarddelete.jsp">
-									<button
-										class="button button--antiman button--round-m button--text-medium button--border-medium">
-										<i class="button__icon icon icon-plus"></i><span>삭제</span>
+						<input type='hidden' name="a" value="read">
+						<input type='hidden' name="no" value="no">
+						
+						<table >
+							<tr>
+								<td>제목</td>
+								<td colspan=3>${read.title }</td>
+							</tr>
+							<tr>
+								<td>이름</td>
+								<td>${read.member_name }</td>
+								<td>작성일</td>
+								<td>${read.reg_date }</td>
+							</tr>
+							<tr>
+								<td colspan=4>${fn:replace( read.content, newLineChar, "<br>" ) }</td>
+							</tr>
+							<tr>
+								<td colspan=4 align=right><a
+									href="/mysite/views/board/boarddelete.jsp">
+										<button
+											class="button button--antiman button--round-m button--text-medium button--border-medium">
+											<i class="button__icon icon icon-plus"></i><span>삭제</span>
 
-									</button></td>
-						</tr>
-					</table>
+										</button>
+								</a><a href="/mysite/board?a=updateform&no=${read.no }">
+										<button
+											class="button button--antiman button--round-m button--text-medium button--border-medium">
+											<i class="button__icon icon icon-plus"></i><span>수정</span>
+
+										</button>
+								</a></td>
+							</tr>
+						</table>
 				</div>
 
 

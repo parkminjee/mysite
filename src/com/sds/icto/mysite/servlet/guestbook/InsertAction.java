@@ -17,6 +17,7 @@ public class InsertAction implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, ClassNotFoundException, ServletException,
 			IOException {
+		System.out.println("1");
 		String name = request.getParameter( "name" );
 		String pwd = request.getParameter( "pwd" );
 		String meg = request.getParameter( "meg" );

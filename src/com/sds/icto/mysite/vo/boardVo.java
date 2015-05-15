@@ -7,6 +7,21 @@ public class boardVo {
 	private int member_no;
 	private String member_name;
 	private String reg_date;
+	
+	public boardVo(int no, String title, String content, int member_no, String member_name, String reg_date){
+		super();
+		this.no = no;
+		this.title = title;
+		this.content=content;
+		this.member_no=member_no;
+		this.member_name=member_name;
+		this.reg_date=reg_date;
+	}
+	
+	public boardVo(){
+		
+	}
+	
 	public int getNo() {
 		return no;
 	}

@@ -2,10 +2,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-
+<%@ page import="com.sds.icto.mysite.vo.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%
+	pageContext.setAttribute("newLineChar", "\n");
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -41,30 +43,33 @@
 
 					</button>
 				</a>
+
 				<div>
-					<table>
-						<thead>
+					<form action="/mysite/board" method="post">
+					<input type='hidden' name="a" value="update">
+					<input type="hidden" value="${authMember.no}" id="member_no" name="member_no">
+				<input type="hidden" value="${authMember.name}"id="member_name" name="member_name"> 
+						<input type="hidden" value="${update.no}"id="no" name="no"> 
+						<input type="hidden" value="${update.reg_date}"id="reg_date" name="reg_date"> 
+						
+						<table>
 							<tr>
-								<th scope="col">글번호</th>
-								<th scope="col">제목</th>
-								<th scope="col">작성자</th>
-								<th scope="col">작성일</th>
+								<td>제목</td>
+								<td colspan=3><textarea name="title" cols=70 rows=1.5>${update.title }</textarea></td>
 							</tr>
-						</thead>
 
-						<tbody>
-							<c:forEach items="${requestScope.list }" var="vo">
-								<tr>
-									<td>${vo.no }</td>
-									<td><a
-										href="/mysite/board?a=read&no=${vo.no }">${vo.title }</a></td>
-									<td>${vo.member_name }</td>
-									<td>${vo.reg_date }</td>
-								</tr>
-							</c:forEach>
-						</tbody>
+							<tr>
+								<td>내용</td>
+								<td><textarea name="content" cols=70 rows=8>${update.content }</textarea></td>
+							</tr>
+							<tr>
+								
+								<td></td>
+								<td align=right><input type="submit" VALUE=" 확인 "></td>
 
-					</table>
+							</tr>
+						</table>
+					</form>
 				</div>
 
 			</div>
