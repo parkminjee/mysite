@@ -30,7 +30,7 @@
 		<div id="wrapper">
 			<div id="content">
 				<div id="boardname">
-					<h3>게시판이름</h3>
+					<h3>게시판이름${read.no }</h3>
 				</div>
 				<div id="boardsub">
 					<h6>게시판설명</h6>
@@ -44,7 +44,7 @@
 				</a>
 				<div>
 						<input type='hidden' name="a" value="read">
-						<input type='hidden' name="no" value="no">
+						<input type='hidden' name="no" value="${read.no }">
 						
 						<table >
 							<tr>
@@ -67,7 +67,7 @@
 							</c:when>
 							<c:otherwise>
 								<td colspan=4 align=right><a
-									href="/mysite/views/board/boarddelete.jsp">
+									href="/mysite/board?a=deleteform&no=${read.no }">
 										<button
 											class="button button--antiman button--round-m button--text-medium button--border-medium">
 											<i class="button__icon icon icon-plus"></i><span>삭제</span>

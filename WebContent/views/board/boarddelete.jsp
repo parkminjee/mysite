@@ -28,23 +28,30 @@
 
 				<div>
 
-						
-							<form id="login-form" name="loginform" method="post">
-							<input type="hidden" name="a" value="delete">
-								<p>정말로 삭제하시겠습니까?</p>
-								<a href="/mysite/views/board/board.jsp">
+
+					<form id="login-form" name="loginform" method="post">
+						<input type="hidden" name="a" value="delete">
+						<input type="hidden" value="${authMember.no}" id="member_no" name="member_no">
+						<input type="hidden" value="${authMember.name}"id="member_name" name="member_name"> 
+						<input type="hidden" value="${delete.no}"id="no" name="no"> 
+
+						<p>정말로 삭제하시겠습니까?${param.no }</p>
+						</form>
+								<a href="/mysite/board?a=list">
 									<button
 										class="button button--antiman button--round-m button--text-medium button--border-medium">
 										<i class="button__icon icon icon-plus"></i><span>취소</span>
 									</button>
-								</a> <a href="/mysite/views/board/board.jsp?a=deleteform&no=${delete.no }">
-									<button type="submit"
+								</a>
+								<a
+									href="/mysite/board?a=delete&no=${param.no }">
+									<button 
 										class="button button--antiman button--round-m button--text-medium button--border-medium">
 										<i class="button__icon icon icon-plus"></i><span>확인</span>
 									</button>
 								</a>
 
-							</form>
+					
 
 				</div>
 

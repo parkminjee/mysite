@@ -19,13 +19,12 @@ public class boardDeleteAction implements Action {
 			IOException {
 		int no = Integer.parseInt(request.getParameter("no"));
 
-		boardVo vo = new boardVo();
-		vo.setNo(no);
-		
 		boardDao dao = new boardDao();
 		
 		dao.delete(no);
-		response.sendRedirect("/mysite/guestbook");
+		System.out.println("1");
+		
+		response.sendRedirect("/mysite/board");
 	}
 
 }
